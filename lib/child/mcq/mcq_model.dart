@@ -68,25 +68,6 @@ class FirstPage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 200,),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow[300],
-              ),
-              child: const Text(
-                'View Scores',
-                style: TextStyle(
-                  color: Colors.teal,
-                ),
-
-              ),
-              onPressed: () {
-                question_set = question_pack_2;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ScorePage()),
-                );
-              },
-            ),
           ],
         ),
       ),
@@ -608,11 +589,13 @@ void saveScore(int score) async {
 
   try {
     final directory = await getApplicationDocumentsDirectory();
-
     final file = File('${directory.path}/mcq_scores.txt');
+
     final now = DateTime.now();
-    final formattedDate = now.toString().split('.')[0]; // Remove milliseconds
+    final formattedDate = '${now.hour}:${now.minute}:${now.second} ' '' '' ' ${now.day}/${now.month}/${now.year}'; // Time followed by date
     final text = '$formattedDate%${getLevelName()}%$score/${question_set.length}\n';
+
+
     if (!await file.exists()) {
       await file.writeAsString(text);
     } else {
@@ -633,102 +616,6 @@ void resetQuiz() {
     question.isLocked = false;
     question.selectedOption = null;
     question.selectedOption = null;
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-class ScorePage extends StatefulWidget {
-  const ScorePage({Key? key}) : super(key: key);
-
-  @override
-  _ScorePageState createState() => _ScorePageState();
-}
-
-class _ScorePageState extends State<ScorePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Scores',
-          style: TextStyle(
-            color: Colors.teal,
-          ),
-        ),
-        backgroundColor: Colors.amber[600],
-      ),
-      backgroundColor: Colors.amber[400],
-
-      body: FutureBuilder<String>(
-        future: readScores(),
-        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else {
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text(
-                 // 'Error: ${snapshot.error}',
-                  'No scores yet.',
-                  style: TextStyle(
-                    color: Colors.teal,
-                    fontSize: 30,
-                    ),
-                ),
-              );
-            } else if (snapshot.data!.isEmpty){
-              return const Text(
-                'No scores yet.',
-                style: TextStyle(
-                  color: Colors.teal
-                ),
-              );
-            }
-            else {
-              return ListView(
-                children: snapshot.data!.split('\n').map((line) {
-                  final parts = line.split('%');
-                  if (parts.length < 3) return Container(); // Skip malformed lines
-                  final date = parts[0];
-                  final levelName = parts[1];
-                  final score = parts[2];
-                  return ListTile(
-                    title: Text('Date: $date'),
-                    subtitle: Text('Level Name: $levelName\nScore: $score'),
-                  );
-                }).toList(),
-              );
-            }
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await clearScores(); // Clear the scores
-          setState(() {}); // Refresh the page
-        },
-        child: Icon(
-          Icons.delete,
-          color: Colors.amber[900],
-        ),
-        backgroundColor: Colors.teal,
-      ),
-    );
-  }
-
-  Future<String> readScores() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/mcq_scores.txt');
-    return file.readAsString();
-  }
-}
-
-Future<void> clearScores() async {
-  final directory = await getApplicationDocumentsDirectory();
-  final file = File('${directory.path}/mcq_scores.txt');
-  if (await file.exists()) {
-    await file.delete();
   }
 }
 

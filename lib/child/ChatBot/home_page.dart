@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 
 class VChomepage extends StatefulWidget {
   const VChomepage({super.key});
@@ -25,15 +28,22 @@ class _VChomepageState extends State<VChomepage> {
   int start = 200;
   int delay = 200;
 
-  void speechtoGPT () async {
+  void speechtoGPT() async {
     setState(() {});
     if (speechToText.isListening) {
       print("waiting to shutup");
       Future.delayed(Duration(milliseconds: 1900), speechtoGPT);
-      return;}
+      return;
+    }
     print("i sent --- " + lastWords + " ---- to chat gpt");
-    // final speech = lastWords;
+
     final speech = await openAIService.isArtPromptAPI(lastWords);
+    print(speech);
+    if (!speech.contains('error')) {
+      if (!speech.contains('Error')) {
+        saveQuestion(lastWords, speech);
+      }
+    }
     if (speech.contains('https')) {
       generatedImageUrl = speech;
       generatedContent = null;
@@ -116,11 +126,11 @@ class _VChomepageState extends State<VChomepage> {
                     height: 123,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/virtualAssistant.png',
-                        ),
-                      ),
+                      // image: DecorationImage(
+                      //   image: AssetImage(
+                      //     'assets/images/virtualAssistant.png',
+                      //   ),
+                      // ),
                     ),
                   ),
                 ],
@@ -152,7 +162,7 @@ class _VChomepageState extends State<VChomepage> {
                     Text(
                       lastWords == ""
                           ? 'Hello ! \n what can I do for you?'
-                          :lastWords,
+                          : lastWords,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'Cera Pro',
@@ -184,12 +194,9 @@ class _VChomepageState extends State<VChomepage> {
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
                   children: [
-
                     Text("Answer: "),
                     Text(
-                      generatedContent == null
-                          ? ''
-                          : generatedContent!,
+                      generatedContent == null ? '' : generatedContent!,
                       style: TextStyle(
                         fontFamily: 'Cera Pro',
                         color: Pallete.mainFontColor,
@@ -200,50 +207,102 @@ class _VChomepageState extends State<VChomepage> {
                       padding: const EdgeInsets.all(10.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.network(generatedImageUrl == null
-                            ? 'https://cdn.discordapp.com/attachments/792029188009361452/1189049370029588562/image.png?ex=65f90885&is=65e69385&hm=58039fa624a4fdb2f8e88ec1dda75b5eb1fb4a6ceedf8dcf7158dfcdb9e54272&'
-                            : generatedImageUrl!,),
+                        child: Image.network(
+                          generatedImageUrl == null
+                              ? 'https://cdn.discordapp.com/attachments/792029188009361452/1189049194456035368/image.png?ex=6630675b&is=661df25b&hm=c7323f238456370039cf6a31a2cd8b685270ea21463117fb994feb7b7cf8d27d&'
+                              : generatedImageUrl!,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-
             ),
             if (generatedImageUrl != null)
-            SlideInLeft(
-              child: Visibility(
-                visible: generatedContent == null && generatedImageUrl == null,
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.centerLeft,
-                  margin: const EdgeInsets.only(top: 10, left: 22),
+              SlideInLeft(
+                child: Visibility(
+                  visible:
+                      generatedContent == null && generatedImageUrl == null,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(top: 10, left: 22),
+                  ),
                 ),
               ),
-            ),
             // features list
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 50),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: 'I can draw or answer any question...',
+                        border: OutlineInputBorder(),
+                        prefixIcon: IconButton(
+                          icon: Icon(Icons.mic),
+                          onPressed: () async {
+                            if (await speechToText.hasPermission &&
+                                speechToText.isNotListening) {
+                              await startListening();
+                              setState(() {});
+                            }
+                            if (speechToText.isListening) {
+                              speechtoGPT();
+                            } else {
+                              initSpeechToText();
+                            }
+                          },
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.arrow_forward_sharp),
+                          onPressed: () {
+                            speechtoGPT();
+                          },
+                        ),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          lastWords = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: ZoomIn(
-        // delay: Duration(milliseconds: start + 3 * delay),
-        child: TextButton.icon(
-          onPressed: () async {
-            if (await speechToText.hasPermission && speechToText.isNotListening) {
-              await startListening();
-              setState(() {});
-            } if (speechToText.isListening) {
-              speechtoGPT();
-              } else {
-                initSpeechToText();
-              }
-
-
-          },
-          icon: Icon(speechToText.isListening ? Icons.stop : Icons.mic,),
-          label: Text("${speechToText.isListening}"),
-        ),
-      ),
     );
+  }
+}
+
+void saveQuestion(String question, String answer) async {
+  // Path to a directory where the app may place data that is user-generated
+  //final directory = await getApplicationDocumentsDirectory();
+
+  try {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/chat_history.txt');
+
+    final now = DateTime.now();
+    final formattedDate = '${now.hour}:${now.minute}:${now.second} '
+        ''
+        ''
+        ' ${now.day}/${now.month}/${now.year}'; // Time followed by date
+    final text = '$formattedDate*$question*$answer\n';
+
+    if (!await file.exists()) {
+      await file.writeAsString(text);
+    } else {
+      await file.writeAsString(text, mode: FileMode.append);
+    }
+    print("\n$text\n");
+    print("\nsaved to ${directory.path}\n");
+  } on PlatformException catch (e) {
+    print(e);
   }
 }

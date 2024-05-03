@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class PRorCh extends StatefulWidget {
-  const PRorCh({super.key});
+class PRfeatures extends StatefulWidget {
+  const PRfeatures({super.key});
 
   @override
-  State<PRorCh> createState() => _PRorChState();
+  State<PRfeatures> createState() => _PRfeaturesState();
 }
 
-class _PRorChState extends State<PRorCh> {
+class _PRfeaturesState extends State<PRfeatures> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,18 +22,19 @@ class _PRorChState extends State<PRorCh> {
           child: Column(
             children: [
               TextButton(
-                  onPressed: () async{
-                    Navigator.pushNamed(context, '/ch_index');
-                  }, 
-                  child: Text("Child ?")
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/chat_history');
+                  },
+                  child: Text("history of Questions asked to chatbot")
               ),
               TextButton(
-                  onPressed: () async{
-                    Navigator.pushNamed(context, '/parent_index');
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/mcq_history');
                   },
-                  child: Text("Parent ?")
+                  child: Text("mcq scores")
               ),
-              
+
+
             ],
           ),
         ),

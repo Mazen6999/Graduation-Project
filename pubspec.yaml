@@ -42,6 +42,9 @@ dependencies:
   flutter_tts: ^3.6.3
   animate_do: ^3.0.2
   flutter_spinkit: ^5.2.0
+  ar_flutter_plugin: ^0.7.3
+  vector_math: ^2.1.4
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +74,12 @@ flutter:
     - assets/mcq_emotions/pack2/
     - assets/mcq_emotions/pack3/
     - assets/mcq_emotions/pack4/
+    - assets/Models/panda_cry/
+    - assets/Models/panda_excited/
+    - assets/Models/panda_happy/
+    - assets/Models/panda_laughing/
+    - assets/Models/panda_mad/
+    - assets/Models/panda_sad/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

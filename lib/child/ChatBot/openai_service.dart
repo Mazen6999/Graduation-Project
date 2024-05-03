@@ -31,18 +31,8 @@ class OpenAIService {
             jsonDecode(res.body)['choices'][0]['message']['content'];
         content = content.trim();
 
-        // if(prompt.contains("picture") || prompt.contains("image") || prompt.contains("draw")){
-        //   print("yesssssssssssssssssssssssssssssssssssssss image");
-        //   final res = await dallEAPI(prompt);
-        //   return res;
-        // }else{
-        //   print("Nooooooooooooooooooooooooooooooooooo image");
-        //   final res = await chatGPTAPI(prompt);
-        //       return res;
-        // }
 
         if(prompt.startsWith("draw") || prompt.startsWith("image")){
-            print("yesssssssssssssssssssssssssssssssssssssss image");
             final res = await dallEAPI(prompt);
             return res;
           }

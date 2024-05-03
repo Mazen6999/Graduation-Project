@@ -39,6 +39,12 @@ class _ChfeaturesState extends State<Chfeatures> {
                   },
                   child: Text("mcq")
               ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/ar_index');
+                  },
+                  child: Text("AR")
+              ),
 
             ],
           ),

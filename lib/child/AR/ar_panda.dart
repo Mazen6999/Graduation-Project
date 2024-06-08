@@ -39,7 +39,7 @@ class _ar_pandaState extends State<ar_panda> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Local & Web Objects'),
+          title: const Text('Expressions With Pando'),
         ),
         body: Container(
             child: Stack(children: [
@@ -64,7 +64,7 @@ class _ar_pandaState extends State<ar_panda> {
                             width: 30, // adjust width as needed
                             height: 30, // adjust height as needed
                           ),
-                           // adjust spacing between image and text
+                          // adjust spacing between image and text
                           Text(
                             'Panda Smile',
                             style: TextStyle(
@@ -74,7 +74,7 @@ class _ar_pandaState extends State<ar_panda> {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: panda_excited,
+                      onPressed: panda_excited,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -98,7 +98,7 @@ class _ar_pandaState extends State<ar_panda> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                        onPressed: panda_laugh,
+                      onPressed: panda_laugh,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -117,7 +117,7 @@ class _ar_pandaState extends State<ar_panda> {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: panda_sad,
+                      onPressed: panda_sad,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -141,7 +141,7 @@ class _ar_pandaState extends State<ar_panda> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                        onPressed: panda_cry,
+                      onPressed: panda_cry,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -160,7 +160,7 @@ class _ar_pandaState extends State<ar_panda> {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: panda_mad,
+                      onPressed: panda_mad,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

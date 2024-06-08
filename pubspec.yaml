@@ -81,6 +81,7 @@ flutter:
     - assets/Models/panda_mad/
     - assets/Models/panda_sad/
     - assets/PRorCH/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

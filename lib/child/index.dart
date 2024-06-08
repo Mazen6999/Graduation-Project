@@ -16,38 +16,57 @@ class _ChfeaturesState extends State<Chfeatures> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
-          child: Column(
-            children: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/vchome');
-                  },
-                  child: Text("ChatBot")
+      body: Align(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/vchome');
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+              child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("Chat Bot", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/EDchild');
-                  },
-                  child: Text("Emotion detector")
+            ),
+            const SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/EDchild');
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+              child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("Emotion Detector", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/mcq');
-                  },
-                  child: Text("mcq")
+            ),
+            const SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/mcq');
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+              child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("MCQ Quiz", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/ar_index');
-                  },
-                  child: Text("AR")
+            ),
+            const SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/ar_index');
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+              child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("AR", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
-
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

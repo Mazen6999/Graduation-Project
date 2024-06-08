@@ -12,28 +12,52 @@ class PRorCh extends StatefulWidget {
 class _PRorChState extends State<PRorCh> {
   @override
   Widget build(BuildContext context) {
+    const bgImg = 'assets/PRorCH/question.jpg';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
+        title: Text("Mode Selection"),
       ),
-      body: SafeArea(
+      body: Container(
+        constraints: BoxConstraints.expand(),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(bgImg),
+                fit: BoxFit.fill
+            )
+        ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+          padding: const EdgeInsets.fromLTRB(0, 120, 0, 30),
           child: Column(
             children: [
-              TextButton(
-                  onPressed: () async{
-                    Navigator.pushNamed(context, '/ch_index');
-                  }, 
-                  child: Text("Child ?")
-              ),
-              TextButton(
-                  onPressed: () async{
-                    Navigator.pushNamed(context, '/parent_index');
-                  },
-                  child: Text("Parent ?")
-              ),
-              
+              SizedBox(height: 75,),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async{
+                        Navigator.pushNamed(context, '/ch_index');
+                      },
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text("Play Time", style: TextStyle(color: Colors.black, fontSize: 24), ),
+                      ),
+                  ),
+                  const SizedBox(width: 5,),
+                  ElevatedButton(
+                    onPressed: () async{
+                      Navigator.pushNamed(context, '/parent_index');
+                    },
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text("Parent Mode", style: TextStyle(color: Colors.black, fontSize: 24), ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

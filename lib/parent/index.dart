@@ -18,33 +18,33 @@ class _PRfeaturesState extends State<PRfeatures> {
       ),
       body: Align(
         alignment: Alignment.center,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/chat_history');
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
-              child: const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text("Chat bot History", style: TextStyle(color: Colors.black, fontSize: 24,),)
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/chat_history');
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("Chat bot History", style: TextStyle(color: Colors.black, fontSize: 24,),)
+                ),
               ),
-            ),
-            const SizedBox(height: 10,),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/mcq_history');
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
-              child: const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text("MCQ Scores", style: TextStyle(color: Colors.black, fontSize: 24,),)
+              const SizedBox(height: 10,),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/mcq_history');
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("MCQ Scores", style: TextStyle(color: Colors.black, fontSize: 24,),)
+                ),
               ),
-            ),
-          ],
+            ],
         ),
       ),
     );

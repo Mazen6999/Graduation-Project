@@ -45,7 +45,7 @@ class _PRorChState extends State<PRorCh> {
                         child: Text("Play Time", style: TextStyle(color: Colors.black, fontSize: 24), ),
                       ),
                   ),
-                  const SizedBox(width: 5,),
+                  const SizedBox(width: 20,),
                   ElevatedButton(
                     onPressed: () async{
                       Navigator.pushNamed(context, '/parent_index');

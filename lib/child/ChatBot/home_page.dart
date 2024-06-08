@@ -123,14 +123,14 @@ class _VChomepageState extends State<VChomepage> {
                     ),
                   ),
                   Container(
-                    height: 123,
+                    height: 200,
                     decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      // image: DecorationImage(
-                      //   image: AssetImage(
-                      //     'assets/images/virtualAssistant.png',
-                      //   ),
-                      // ),
+                      shape: BoxShape.rectangle ,
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/virtualAssistant.png',
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -161,7 +161,7 @@ class _VChomepageState extends State<VChomepage> {
                     Text("Your Request"),
                     Text(
                       lastWords == ""
-                          ? 'Hello ! \n what can I do for you?'
+                          ? 'Hello We are Fuzzy and Fizzle ! \n what can we do for you? \n we can answer any question ! \n we can draw any picture !'
                           : lastWords,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -209,7 +209,7 @@ class _VChomepageState extends State<VChomepage> {
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
                           generatedImageUrl == null
-                              ? 'https://cdn.discordapp.com/attachments/792029188009361452/1189049194456035368/image.png?ex=6630675b&is=661df25b&hm=c7323f238456370039cf6a31a2cd8b685270ea21463117fb994feb7b7cf8d27d&'
+                              ? 'https://cdn.discordapp.com/attachments/792029188009361452/1189049370029588562/image.png?ex=66652385&is=6663d205&hm=f0a5d139789a7a0cbb4830bb51c0688cb53d017daadac2037ff85e4248672720&'
                               : generatedImageUrl!,
                         ),
                       ),

@@ -26,7 +26,7 @@ class _ChfeaturesState extends State<Chfeatures> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/vchome');
-              },
+                },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
               child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -37,7 +37,7 @@ class _ChfeaturesState extends State<Chfeatures> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/EDchild');
-              },
+                },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
               child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -48,7 +48,7 @@ class _ChfeaturesState extends State<Chfeatures> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/mcq');
-              },
+                },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
               child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -59,7 +59,7 @@ class _ChfeaturesState extends State<Chfeatures> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/ar_index');
-              },
+                },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
               child: const Padding(
                   padding: EdgeInsets.all(10),

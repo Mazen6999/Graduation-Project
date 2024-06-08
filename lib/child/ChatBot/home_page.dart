@@ -65,6 +65,9 @@ class _VChomepageState extends State<VChomepage> {
 
   Future<void> initTextToSpeech() async {
     await flutterTts.setSharedInstance(true);
+    await flutterTts.setVoice({"name": "en-us-x-iol-network", "locale": "en-US"});
+    await flutterTts.setPitch(1.25); // Higher pitch for a cartoon-like voice
+    await flutterTts.setSpeechRate(0.4); // Slower rate to be more child-friendly
     setState(() {});
   }
 

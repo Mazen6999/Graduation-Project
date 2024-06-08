@@ -22,12 +22,11 @@ class Mood {
 }
 
 List<Mood> moods = [
-  Mood(0, 'Smile'),
-  Mood(1, 'Happy'),
-  Mood(2, 'Laughing'),
-  Mood(3, 'Afraid'),
-  Mood(4, 'Cry'),
-  Mood(5, 'Mad'),
+  Mood(0, 'Happy'),
+  Mood(1, 'Laughing'),
+  Mood(2, 'Afraid'),
+  Mood(3, 'Cry'),
+  Mood(4, 'Mad'),
   // Add more moods as needed
 ];
 
@@ -102,18 +101,17 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
 
   String getUriForMood(int mood) {
     switch (mood) {
+
       case 0:
-        return "assets/Models/panda_happy/panda_happy.gltf"; // URI for mood 1
+        return "assets/Models/panda_excited/panda_excited.gltf"; // URI for mood 1
       case 1:
-        return "assets/Models/panda_excited/panda_excited.gltf"; // URI for mood 2
+        return "assets/Models/panda_laughing/panda_laughing.gltf"; // URI for mood 2
       case 2:
-        return "assets/Models/panda_laughing/panda_laughing.gltf"; // URI for mood 1
+        return "assets/Models/panda_sad/panda_sad.gltf"; // URI for mood 3
       case 3:
-        return "assets/Models/panda_sad/panda_sad.gltf"; // URI for mood 2
+        return "assets/Models/panda_cry/panda_cry.gltf"; // URI for mood 4
       case 4:
-        return "assets/Models/panda_cry/panda_cry.gltf"; // URI for mood 1
-      case 5:
-        return "assets/Models/panda_mad/panda_mad.gltf"; // URI for mood 2
+        return "assets/Models/panda_mad/panda_mad.gltf"; // URI for mood 5
     // Add more cases for other moods as needed
       default:
         return "assets/Models/panda_laughing/panda_laugh.gltf"; // Default URI

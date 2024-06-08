@@ -12,7 +12,6 @@ import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:flutter/services.dart';
 import 'package:vector_math/vector_math_64.dart';
-import 'dart:math';
 
 class Mood {
   final int value;
@@ -105,7 +104,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
       case 0:
         return "assets/Models/panda_excited/panda_excited.gltf"; // URI for mood 1
       case 1:
-        return "assets/Models/panda_laughing/panda_laughing.gltf"; // URI for mood 2
+        return "assets/Models/panda_laughing/panda_laugh.gltf"; // URI for mood 2
       case 2:
         return "assets/Models/panda_sad/panda_sad.gltf"; // URI for mood 3
       case 3:

@@ -76,6 +76,7 @@ flutter:
     - assets/mcq_emotions/pack4/
     - assets/Models/panda_cry/
     - assets/Models/panda_excited/
+    - assets/Models/panda_happy/
     - assets/Models/panda_laughing/
     - assets/Models/panda_mad/
     - assets/Models/panda_sad/

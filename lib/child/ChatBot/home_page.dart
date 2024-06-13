@@ -65,9 +65,11 @@ class _VChomepageState extends State<VChomepage> {
 
   Future<void> initTextToSpeech() async {
     await flutterTts.setSharedInstance(true);
-    await flutterTts.setVoice({"name": "en-us-x-iol-network", "locale": "en-US"});
+    await flutterTts
+        .setVoice({"name": "en-us-x-iol-network", "locale": "en-US"});
     await flutterTts.setPitch(1.25); // Higher pitch for a cartoon-like voice
-    await flutterTts.setSpeechRate(0.4); // Slower rate to be more child-friendly
+    await flutterTts
+        .setSpeechRate(0.4); // Slower rate to be more child-friendly
     setState(() {});
   }
 
@@ -102,7 +104,7 @@ class _VChomepageState extends State<VChomepage> {
     return Scaffold(
       appBar: AppBar(
         title: BounceInDown(
-          child: const Text('Fuzzy Fizzie'),
+          child: const Text('Fuzzy and Fizzie'),
         ),
         leading: const Icon(Icons.menu),
         centerTitle: true,
@@ -128,7 +130,7 @@ class _VChomepageState extends State<VChomepage> {
                   Container(
                     height: 200,
                     decoration: const BoxDecoration(
-                      shape: BoxShape.rectangle ,
+                      shape: BoxShape.rectangle,
                       image: DecorationImage(
                         image: AssetImage(
                           'assets/images/virtualAssistant.png',
@@ -210,11 +212,9 @@ class _VChomepageState extends State<VChomepage> {
                       padding: const EdgeInsets.all(10.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          generatedImageUrl == null
-                              ? 'https://cdn.discordapp.com/attachments/792029188009361452/1189049370029588562/image.png?ex=66652385&is=6663d205&hm=f0a5d139789a7a0cbb4830bb51c0688cb53d017daadac2037ff85e4248672720&'
-                              : generatedImageUrl!,
-                        ),
+                        child: generatedImageUrl == null
+                            ? Image.asset('assets/images/white.png')
+                            : Image.network(generatedImageUrl!),
                       ),
                     ),
                   ],

@@ -18,14 +18,14 @@ class _chat_historyState extends State<chat_history> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Scores',
+          'ChatBot history',
           style: TextStyle(
-            color: Colors.teal,
+            color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.amber[600],
+        backgroundColor: Colors.grey[400],
       ),
-      backgroundColor: Colors.amber[400],
+      backgroundColor: Colors.white,
 
       body: FutureBuilder<String>(
         future: readScores(),
@@ -37,7 +37,7 @@ class _chat_historyState extends State<chat_history> {
               return const Center(
                 child: Text(
                   // 'Error: ${snapshot.error}',
-                  'No scores yet.',
+                  'History Empty',
                   style: TextStyle(
                     color: Colors.teal,
                     fontSize: 30,
@@ -80,8 +80,7 @@ class _chat_historyState extends State<chat_history> {
                         SizedBox(width: 10), // Add spacing between image and text
                         Flexible(
                           child: Text(
-                            'User Request: $question\nBot Response: $answer',
-                            overflow: TextOverflow.ellipsis,
+                            'User Request: $question',
                           ),
                         ),
                       ],
@@ -103,9 +102,9 @@ class _chat_historyState extends State<chat_history> {
         },
         child: Icon(
           Icons.delete,
-          color: Colors.amber[900],
+          color: Colors.grey[900],
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.white,
       ),
     );
   }

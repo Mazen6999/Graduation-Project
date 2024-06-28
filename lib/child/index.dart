@@ -41,7 +41,7 @@ class _ChfeaturesState extends State<Chfeatures> {
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
               child: const Padding(
                   padding: EdgeInsets.all(10),
-                  child: Text("Emotion Detector", style: TextStyle(color: Colors.black, fontSize: 24,),)
+                  child: Text("Google Emotion Detector", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
             ),
             const SizedBox(height: 10,),
@@ -64,6 +64,17 @@ class _ChfeaturesState extends State<Chfeatures> {
               child: const Padding(
                   padding: EdgeInsets.all(10),
                   child: Text("AR", style: TextStyle(color: Colors.black, fontSize: 24,),)
+              ),
+            ),
+            const SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/adhamEDM');
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,),
+              child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text("ML Emotion Detector", style: TextStyle(color: Colors.black, fontSize: 24,),)
               ),
             ),
           ],

@@ -22,6 +22,7 @@ import 'parent/index.dart';
 
 import 'parent/mcq_history/mcq_history.dart';
 import 'parent/chat_history/chat_history.dart';
+import 'child/EDM/main.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -48,6 +49,7 @@ void main() => runApp(MaterialApp(
 
     '/chat_history': (context)=> chat_history(),
     '/mcq_history': (context)=> mcq_history(),
+    '/adhamEDM': (context)=> adhamED(),
 
 
   },

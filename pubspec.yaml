@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  camera:
+  camera: ^0.10.5+9
   face_emotion_detector: ^0.0.4
   path_provider:
   # The following adds the Cupertino Icons font to your application.
@@ -45,6 +45,13 @@ dependencies:
   ar_flutter_plugin: ^0.7.3
   vector_math: ^2.1.4
   url_launcher: ^6.2.6
+  permission_handler: ^10.4.5
+  tflite_flutter: ^0.10.1
+  tflite_v2: ^1.0.0
+  get: ^4.6.5
+  image: ^3.2.0
+
+
 
 
 dev_dependencies:
@@ -83,6 +90,10 @@ flutter:
     - assets/Models/panda_sad/
     - assets/PRorCH/
     - assets/images/
+    - assets/labels.txt
+    - assets/converted_model.tflite
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
